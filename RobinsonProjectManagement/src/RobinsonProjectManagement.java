@@ -3,31 +3,37 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-/**James Robinson, Hugh Tuckwell, and not Sam
- * 5/6/22
- * you will be creating a Java program which will help your sister study for her SDLC test. 
- * Your system must include points to study from, as well as a multiple choice quiz (10 questions) for practice,
- * which will be automatically graded and feedback given. 
- * These study notes and questions must be read from external files (so they can easily be updated). 
- * You and your partner(s) will be using the stages of the SDLC to complete this project. 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * James Robinson, Hugh Tuckwell, and not Sam 5/6/22 you will be creating a Java
+ * program which will help your sister study for her SDLC test. Your system must
+ * include points to study from, as well as a multiple choice quiz (10
+ * questions) for practice, which will be automatically graded and feedback
+ * given. These study notes and questions must be read from external files (so
+ * they can easily be updated). You and your partner(s) will be using the stages
+ * of the SDLC to complete this project. To change this license header, choose
+ * License Headers in Project Properties. To change this template file, choose
+ * Tools | Templates and open the template in the editor.
  */
-
 /**
  *
  * @author jarob3698
  */
 public class RobinsonProjectManagement extends javax.swing.JFrame {
+
     Question[] questions;
-    
+
     /**
      * Creates new form RobinsonProjectManagement
      */
+    /**
+     *
+     */
     public RobinsonProjectManagement() {
         initComponents();
-         try {
+        /**
+         * import the file and save it to an array of question objects
+         */
+        try {
             File file1 = new File("src/questions.txt");
             Scanner scanner = new Scanner(file1);
             //while the file has lines left, store those lines to the array at the incrementer
@@ -38,13 +44,35 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
                 Question temp = new Question();
                 temp.setQuestion(scanner.nextLine());
                 for (int i = 0; i < 4; i++) {
-                    temp.setAnswer(scanner.nextLine(),i);
+                    temp.setAnswer(scanner.nextLine(), i);
                 }
-                temp.setCorrectAnswer(Integer.parseInt(scanner.nextLine()));
+                temp.setCorrectAnswer(Integer.parseInt(scanner.nextLine()) - 1);
             }
         } catch (FileNotFoundException e) {
             System.out.println("Error: " + e);
         }
+
+    }
+
+    public int buttonCheck() {
+        int i = 0;
+        if (btnAnswer1.isSelected()) {
+            i = 0;
+        }
+        if (btnAnswer2.isSelected()) {
+            i = 1;
+        }
+        if (btnAnswer3.isSelected()) {
+            i = 2;
+        }
+        if (btnAnswer4.isSelected()) {
+            i = 3;
+        }
+        return i;
+    }
+
+    public boolean runQuestion(Question q) {
+        return (q.getCorrectAns() == buttonCheck());
     }
 
     /**
@@ -56,10 +84,11 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnGroupAnswers = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtQuiz = new javax.swing.JTextArea();
         btnAnswer1 = new javax.swing.JRadioButton();
-        btnAnswerTwo = new javax.swing.JRadioButton();
+        btnAnswer2 = new javax.swing.JRadioButton();
         btnAnswer3 = new javax.swing.JRadioButton();
         btnAnswer4 = new javax.swing.JRadioButton();
         btnBack = new javax.swing.JButton();
@@ -86,20 +115,24 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 290, 270));
 
+        btnGroupAnswers.add(btnAnswer1);
         btnAnswer1.setText("Answer 1");
         getContentPane().add(btnAnswer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 430, -1, -1));
 
-        btnAnswerTwo.setText("Answer 2");
-        btnAnswerTwo.addActionListener(new java.awt.event.ActionListener() {
+        btnGroupAnswers.add(btnAnswer2);
+        btnAnswer2.setText("Answer 2");
+        btnAnswer2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAnswerTwoActionPerformed(evt);
+                btnAnswer2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAnswerTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 430, -1, -1));
+        getContentPane().add(btnAnswer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 430, -1, -1));
 
+        btnGroupAnswers.add(btnAnswer3);
         btnAnswer3.setText("Answer 3");
         getContentPane().add(btnAnswer3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 430, -1, -1));
 
+        btnGroupAnswers.add(btnAnswer4);
         btnAnswer4.setText("Answer 4");
         getContentPane().add(btnAnswer4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 430, -1, -1));
 
@@ -159,9 +192,9 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNextActionPerformed
 
-    private void btnAnswerTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnswerTwoActionPerformed
+    private void btnAnswer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnswer2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAnswerTwoActionPerformed
+    }//GEN-LAST:event_btnAnswer2ActionPerformed
 
     private void btnEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndActionPerformed
         // TODO add your handling code here:
@@ -204,11 +237,12 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton btnAnswer1;
+    private javax.swing.JRadioButton btnAnswer2;
     private javax.swing.JRadioButton btnAnswer3;
     private javax.swing.JRadioButton btnAnswer4;
-    private javax.swing.JRadioButton btnAnswerTwo;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnEnd;
+    private javax.swing.ButtonGroup btnGroupAnswers;
     private javax.swing.JButton btnLeft;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnQuit;

@@ -10,9 +10,9 @@
  * @author jarob3698
  */
 class Question {
-    int correctAns;
-    String[] answers = new String[4];
-    String question;
+    private int correctAns;
+    private String[] answers = new String[4];
+    private String question;
     
     public Question(){
         correctAns = 0;
@@ -61,5 +61,13 @@ class Question {
     
     public boolean equals(Question comp){
         return (answers.equals(comp.answers))&&(correctAns==(comp.correctAns))&&(question.equals(comp.question));
+    }
+    public String toString(){
+        String str = "Question: " + question + "\nAnswers: ";
+        for (int i = 0; i < 4; i++) {
+            str += "\n" + answers[i];
+        }
+        str += "\nCorrect Answer: " + "(" + correctAns + ") " + answers[correctAns];
+        return str;
     }
 }
