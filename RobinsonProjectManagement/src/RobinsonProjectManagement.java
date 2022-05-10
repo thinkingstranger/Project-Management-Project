@@ -1,6 +1,7 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -23,6 +24,8 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
     Question[] questions;
     int currentQuestion = 0;
     boolean stop = false;
+    int currentNotes = 0;
+    ArrayList<String> notesList;
     /**
      * Creates new form RobinsonProjectManagement
      */
@@ -52,6 +55,16 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
             }
                 
             
+             File file2 = new File("src/notes.txt");
+            Scanner scanner2 = new Scanner(file2);
+            
+            notesList = new ArrayList();
+            
+            while (scanner2.hasNextLine()){
+                notesList.add(scanner2.nextLine());
+            }
+            
+            txtNotes.setText(notesList.get(currentNotes));
             System.out.println(questions);
         } catch (FileNotFoundException e) {
             System.out.println("Error: " + e);
@@ -260,6 +273,24 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnStart1ActionPerformed
+private void btnRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRightActionPerformed
+        currentQuestion++;
+        if (currentQuestion != notesList.size()){
+            txtNotes.setText(notesList.get(currentQuestion));
+        } else {
+            currentQuestion--;
+        }
+        
+    }//GEN-LAST:event_btnRightActionPerformed
+
+    private void btnLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLeftActionPerformed
+        currentQuestion--;
+        if (currentQuestion >= 0){
+            txtNotes.setText(notesList.get(currentQuestion));
+        } else {
+            currentQuestion++;
+        }
+    }//GEN-LAST:event_btnLeftActionPerformed
 
     /**
      * @param args the command line arguments
