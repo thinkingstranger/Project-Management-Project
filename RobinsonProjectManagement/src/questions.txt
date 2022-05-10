@@ -1,0 +1,13 @@
+2
+Is this a question?
+No
+No
+Yes
+No
+3
+How many letters does "apple" have?
+1
+2
+4
+5
+4
