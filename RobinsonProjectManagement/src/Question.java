@@ -48,7 +48,7 @@ class Question {
     public int getCorrectAns(){
         return correctAns;
     }
-    public String getAnser(int i){
+    public String getAnswer(int i){
         return answers[i];
     }
     public String getQuestion(){

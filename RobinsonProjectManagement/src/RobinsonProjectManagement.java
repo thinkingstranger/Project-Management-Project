@@ -21,7 +21,8 @@ import java.util.Scanner;
 public class RobinsonProjectManagement extends javax.swing.JFrame {
 
     Question[] questions;
-
+    int currentQuestion = 0;
+    boolean stop = false;
     /**
      * Creates new form RobinsonProjectManagement
      */
@@ -39,15 +40,18 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
             //while the file has lines left, store those lines to the array at the incrementer
             String firstLine = scanner.nextLine();
             questions = new Question[Integer.parseInt(firstLine)];
-            int incrementer = 0;
-            while (scanner.hasNextLine()) {
+            for (int i = 0; i < Integer.parseInt(firstLine); i++) {
                 Question temp = new Question();
                 temp.setQuestion(scanner.nextLine());
-                for (int i = 0; i < 4; i++) {
-                    temp.setAnswer(scanner.nextLine(), i);
+                for (int j = 0; j < 4; j++) {
+                    temp.setAnswer(scanner.nextLine(), j);
                 }
                 temp.setCorrectAnswer(Integer.parseInt(scanner.nextLine()) - 1);
+                questions[i] = temp;
             }
+                
+            
+            System.out.println(questions);
         } catch (FileNotFoundException e) {
             System.out.println("Error: " + e);
         }
@@ -74,7 +78,19 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
     public boolean runQuestion(Question q) {
         return (q.getCorrectAns() == buttonCheck());
     }
-
+    public void displayQuestion(Question q){
+        String strOutput = "Current Question:" + currentQuestion + "\n" + q.getQuestion() + "\n";
+        int numQuestions = questions.length;
+        for (int i = 0; i < 4; i++) {
+            strOutput += (i + 1) + ": " + q.getAnswer(i) + "\n";
+        }
+        txtQuiz.setText(strOutput);
+    }
+    
+    public void changeQuestion(int i){
+        currentQuestion += i;
+        displayQuestion(questions[currentQuestion]);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -173,6 +189,11 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
         getContentPane().add(btnRight, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, -1, -1));
 
         btnStart1.setText("Start Quiz");
+        btnStart1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStart1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnStart1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, -1, -1));
 
         btnQuit.setText("Quit");
@@ -199,6 +220,14 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
     private void btnEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEndActionPerformed
+    
+    private void btnStart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart1ActionPerformed
+        // TODO add your handling code here:
+        System.out.println(questions[currentQuestion].toString());
+        displayQuestion(questions[currentQuestion]);
+        
+        
+    }//GEN-LAST:event_btnStart1ActionPerformed
 
     /**
      * @param args the command line arguments
