@@ -67,7 +67,7 @@ class Question {
         for (int i = 0; i < 4; i++) {
             str += "\n" + answers[i];
         }
-        str += "\nCorrect Answer: " + "(" + correctAns + ") " + answers[correctAns];
+        str += "\nCorrect Answer: " + "(" + (correctAns+1) + ") " + answers[correctAns];
         return str;
     }
 }

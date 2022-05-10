@@ -1,91 +1,13 @@
-15
-What does SDLC stand for?
-Software Developmental Label Cycle
-Software Development Life Cycle
-Scientific Development Life Cycle
-Scientific Developmental Label Cycle
 2
-What is the importantce of SDLC?
-It explains why project planning, scheduling, and budgeting are necessary.
-It allows for some control over the development process in order to guarantee that the final product meets the original criteria.
-It provides a structure for a standard set of projects and deliverables.
-All of the above.
+Is this a question?
+No
+No
+Yes
+No
 3
-Which of the following is a SDLC model?
-The 'pond' model.
-The 'spindal' model.
-The 'waterfall' model'
-The 'obama' model.
+How many letters does "apple" have?
+1
 2
-How many stages are there in the SDLC?
-6
 4
 5
-8
-0
-What is the the design phase?
-When the project is checked for errors.
-When the bugs that have been identified during the usage of the application are fixxed.
-When the priorities, tasks, and resources are planned out.
-When the project requirements are transformed into a design.
-3
-What is the planning phase?
-When the priorities, tasks, and resources are planned out.
-When the project requirements are transformed into a design.
-When the bugs that have been identified during the usage of the application are fixxed.
-When the project is checked for errors.
-0
-What is the maintenance phase?
-When the project is checked for errors.
-When the bugs that have been identified during the usage of the application are fixxed.
-When the priorities, tasks, and resources are planned out.
-None of the above.
-1
-What is the testing phase?
-When the priorities, tasks, and resources are planned out.
-When the bugs that have been identified during the usage of the application are fixxed.
-When the application is investigated and made sure to be within customer requirements.
-None of the above.
-2
-Which of the following describes the waterfall model?
-Each stage must be finished before completing the next.
-Constant iterations of the software are made after recognizing requirements.
-Collaborative desicision making between requirements and solutions teams.
-None of the above.
-0
-What does STLC stand for?
-Software Target Life Cloud
-Software Testing Life Cycle
-Software Target Life Cycle
-Software Testing Life Cloud
-1
-What is meant by the 'scope' of a project?
-The objectives sof a project.
-The goals of a project.
-The expected outcome of a project.
-All of the above.
-3
-Why is maintenence imortant?
-It roots out bugs in the early stages of the project.
-It modifies and updates the application post-release to fix bugs.
-It helps plan out the project before coding begins.
-None of the above.
-0
-What does CMM stand for?
-Circuit Motherboard Model
-Circuit Maturity Mastering
-Capability Maturity Model
-Capability Maturity Mastering
-2
-What is an advantage of the waterfall model?
-It is simple to understand and use.
-It is adaptive.
-There are no advantages.
-It is effective for complex projects.
-0
-What is a limitation of the Waterfall medel?
-It is difficult to understand.
-It is time-comsuming.
-It gives you brain disease.
-It is unfit for small projects.
-1
+4

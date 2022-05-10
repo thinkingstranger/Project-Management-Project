@@ -19,7 +19,7 @@ import java.util.Scanner;
  * @author jarob3698
  */
 public class RobinsonProjectManagement extends javax.swing.JFrame {
-
+    boolean answers[];
     Question[] questions;
     int currentQuestion = 0;
     boolean stop = false;
@@ -40,6 +40,7 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
             //while the file has lines left, store those lines to the array at the incrementer
             String firstLine = scanner.nextLine();
             questions = new Question[Integer.parseInt(firstLine)];
+            answers = new boolean[Integer.parseInt(firstLine)];
             for (int i = 0; i < Integer.parseInt(firstLine); i++) {
                 Question temp = new Question();
                 temp.setQuestion(scanner.nextLine());
@@ -79,6 +80,7 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
         return (q.getCorrectAns() == buttonCheck());
     }
     public void displayQuestion(Question q){
+        btnGroupAnswers.clearSelection();
         String strOutput = "Current Question:" + currentQuestion + "\n" + q.getQuestion() + "\n";
         int numQuestions = questions.length;
         for (int i = 0; i < 4; i++) {
@@ -89,6 +91,12 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
     
     public void changeQuestion(int i){
         currentQuestion += i;
+        if (currentQuestion < 0){
+            currentQuestion = questions.length - 1;
+        }
+        if (currentQuestion >= questions.length){
+            currentQuestion = 0;
+        }
         displayQuestion(questions[currentQuestion]);
     }
     /**
@@ -207,10 +215,16 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        
+        answers[currentQuestion] = runQuestion(questions[currentQuestion]);
+        changeQuestion(-1);
+        
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
         // TODO add your handling code here:
+        answers[currentQuestion] = runQuestion(questions[currentQuestion]);
+        changeQuestion(+1);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnAnswer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnswer2ActionPerformed
@@ -219,6 +233,24 @@ public class RobinsonProjectManagement extends javax.swing.JFrame {
 
     private void btnEndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEndActionPerformed
         // TODO add your handling code here:
+        String strOutput = "Correct Answers: ";
+        int correctAnswers = 0;
+        String str = "";
+        for (int i = 0; i < answers.length; i++) {
+            if(answers[i]){
+                correctAnswers++;
+                str+= "correct";
+            }else{
+                str+= "incorrect";
+            }
+            if(i < answers.length - 1){
+                str+= ", ";
+            }
+        }
+        strOutput += correctAnswers;
+        strOutput += "\n" + str;
+        txtQuiz.setText(strOutput);
+        
     }//GEN-LAST:event_btnEndActionPerformed
     
     private void btnStart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart1ActionPerformed
