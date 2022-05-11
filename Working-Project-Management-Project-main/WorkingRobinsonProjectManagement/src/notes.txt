@@ -1,0 +1,6 @@
+The Waterfall model is the earliest SDLC approach that was used for software development.
+SDLC stands for Systems Development Life Cycle.
+In the design phase, The list of requirements that you develop in the definition phase is used to make design choices.
+SDLC is important because it provides an effective framework and method to develop software applications.
+STLC stands for Software Testing Life Cycle.
+The maintence phase is when designers address issues that are discovered to prevent any hindrance to the expected performance of the software or to add increased functionality to the software.
